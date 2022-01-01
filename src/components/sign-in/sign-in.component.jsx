@@ -1,5 +1,8 @@
 import React from 'react';
 
+import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+
 import './sign-in.styles.scss'
 
 
@@ -8,15 +11,15 @@ class SignIn extends React.Component {
         super(props);
 
         this.state = {
-            email: "",
-            password: ""
+            email: '',
+            password: ''
         }
     }
 
     handleSubmit = event => {
         event.preventDefault();
 
-        this.setState({email: "", password: ""});
+        this.setState({email: '', password: ''});
     }
 
     handleChange = event => {
@@ -27,34 +30,32 @@ class SignIn extends React.Component {
 
     render() {
         return(
-            <div className="sign-in">
-                <h2> I already have an account </h2>
+            <div className='sign-in'>
+                <h2 className='title'> I already have an account </h2>
                 <span> Sign in with your email and password </span>
             
             
-            <form onSubmit={this.handle}>
-                <input 
-                    name="email" 
-                    type="email" 
-                    value={this.state.email} 
-                    onChange={this.handleChange}
-                    equired
-                />
+                <form onSubmit={this.handle}>
+                    <FormInput  
+                        name='email' 
+                        type='email' 
+                        value={this.state.email} 
+                        handleChange={this.handleChange}
+                        label='email'
+                        required
+                    />
 
-                <label> Email </label>
+                    <FormInput 
+                        name='password' 
+                        type='password' 
+                        value={this.state.password}   
+                        handleChange={this.handleChange}
+                        label='password'
+                        required 
+                    />
 
-                <input 
-                    name="password" 
-                    type="password" 
-                    value={this.state.password}   
-                    onChange={this.handleChange}
-                    required 
-                />
-
-                <label> Password </label>    
-
-                <input type="submit" value="Submit form"/>
-            </form>
+                    <CustomButton type='submit'> Sign In </CustomButton>
+                </form>
 
             </div>
 
